@@ -11,9 +11,9 @@ from PyQt6.QtCore import Qt, QSize, QRectF, pyqtSignal, QPointF, QLineF
 
 # --- VISTAS ---
 # Importar las vistas desde sus respectivos archivos
-from vista_menu_principal import MainMenu, PlayerNameDialog
-from vista_modo_juego import GameModeSelection
-from vista_principal_juego import MainGameUI, DefeatScreen
+from frontEnd.vista_menu_principal import MainMenu, PlayerNameDialog
+from frontEnd.vista_modo_juego import GameModeSelection
+from frontEnd.vista_principal_juego import MainGameUI, DefeatScreen
 
 # --- ESTILOS (QSS - Similar a CSS) ---
 # En un proyecto más grande, esto iría en un archivo styles.qss separado.
@@ -87,8 +87,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Corruptópolis")
         self.setGeometry(100, 100, 1280, 720)
         
-        QFontDatabase.addApplicationFont("fonts/Roboto_Regular.ttf")
-        QFontDatabase.addApplicationFont("fonts/Roboto_Condensed-Bold.ttf")
+        QFontDatabase.addApplicationFont("frontEnd/fonts/Roboto_Regular.ttf")
+        QFontDatabase.addApplicationFont("frontEnd/fonts/Roboto_Condensed-Bold.ttf")
 
         self.player_name = "" # Variable para guardar el nombre del jugador
 

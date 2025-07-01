@@ -12,7 +12,7 @@ class MainMenu(QWidget):
     def __init__(self, start_new_game_flow):
         super().__init__()
         self.setObjectName("MainMenu")
-        self.background_image = QPixmap("images/imagen_background.png")
+        self.background_image = QPixmap("frontEnd/images/imagen_background.png")
         
         layout = QVBoxLayout()
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)

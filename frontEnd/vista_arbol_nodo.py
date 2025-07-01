@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
 from PyQt6.QtGui import (QFont, QFontDatabase, QIcon, QPixmap, QPainter, QPalette, 
                          QBrush, QColor, QPen)
 from PyQt6.QtCore import Qt, QSize, QRectF, pyqtSignal, QPointF, QLineF
-from nodo import NodeData  
+from frontEnd.nodo import NodeData  
 
 # --- NUEVA VENTANA DE DETALLES DEL CONTACTO ---
 class ContactDetailDialog(QDialog):

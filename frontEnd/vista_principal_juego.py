@@ -8,8 +8,8 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
 from PyQt6.QtGui import (QFont, QFontDatabase, QIcon, QPixmap, QPainter, QPalette, 
                          QBrush, QColor, QPen)
 from PyQt6.QtCore import Qt, QSize, QRectF, pyqtSignal, QPointF, QLineF
-from nodo import NodeData 
-from vista_arbol_nodo import GraphNodeItem, ContactDetailDialog
+from frontEnd.nodo import NodeData 
+from frontEnd.vista_arbol_nodo import GraphNodeItem, ContactDetailDialog
 
 # --- VISTA 3: PANTALLA PRINCIPAL DEL JUEGO ---
 class MainGameUI(QWidget):

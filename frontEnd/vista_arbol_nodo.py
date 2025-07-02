@@ -1,20 +1,24 @@
-import sys
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
-                             QHBoxLayout, QPushButton, QLabel, QStackedWidget, 
-                             QFrame, QProgressBar, QDialog, QLineEdit,
-                             QDialogButtonBox, QGraphicsView, QGraphicsScene,
-                             QGraphicsObject, QGraphicsLineItem)
-from PyQt6.QtGui import (QFont, QFontDatabase, QIcon, QPixmap, QPainter, QPalette, 
-                         QBrush, QColor, QPen)
+from PyQt6.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, 
+    QHBoxLayout, QPushButton, QLabel, QStackedWidget, 
+    QFrame, QProgressBar, QDialog, QLineEdit,
+    QDialogButtonBox, QGraphicsView, QGraphicsScene,
+    QGraphicsObject, QGraphicsLineItem
+)
+from PyQt6.QtGui import (
+    QFont, QFontDatabase, QIcon, QPixmap, QPainter, QPalette, 
+    QBrush, QColor, QPen
+)
 from PyQt6.QtCore import Qt, QSize, QRectF, pyqtSignal, QPointF, QLineF
 from frontEnd.nodo import NodeData  
+
 
 # --- NUEVA VENTANA DE DETALLES DEL CONTACTO ---
 class ContactDetailDialog(QDialog):
     def __init__(self, node_data: NodeData, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Expediente del Contacto")
-        self.setMinimumWidth(600)
+        self.setMinimumWidth(800)
 
         # --- Layout Principal ---
         main_layout = QHBoxLayout(self)
@@ -47,19 +51,17 @@ class ContactDetailDialog(QDialog):
         ability_frame = QFrame()
         ability_layout = QHBoxLayout(ability_frame)
         ability_icon = QLabel()
-        ability_icon.setPixmap(QPixmap("images/ability_icon.png").scaled(24, 24))
+        ability_icon.setPixmap(QPixmap("frontEnd/images/ability_icon.png").scaled(24, 24))
         ability_text = QLabel(node_data.special_ability)
         ability_layout.addWidget(ability_icon)
         ability_layout.addWidget(ability_text)
         left_layout.addWidget(ability_frame)
-
 
         # --- Columna Derecha ---
         right_panel = QFrame()
         right_layout = QVBoxLayout(right_panel)
         right_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         
-        # Estado
         status_label = QLabel(f"Estado: {node_data.status}")
         status_colors = {
             'Activo': 'background-color: #2E7D32; color: white;',
@@ -69,7 +71,6 @@ class ContactDetailDialog(QDialog):
         }
         status_label.setStyleSheet(f"padding: 5px; border-radius: 5px; {status_colors.get(node_data.status, '')}")
         
-        # Barras de Progreso
         loyalty_bar = QProgressBar()
         loyalty_bar.setObjectName("LoyaltyBar")
         loyalty_bar.setFormat(f"Lealtad: {node_data.loyalty}%")
@@ -84,7 +85,6 @@ class ContactDetailDialog(QDialog):
         risk_bar.setFormat(f"Riesgo: {node_data.risk}%")
         risk_bar.setValue(node_data.risk)
         
-        # Otros datos
         bribe_label = QLabel(f"Costo Soborno: ${node_data.bribe_cost:,}")
         influence_label = QLabel(f"Aporte Influencia: {node_data.influence_gen} pts/turno")
         wealth_label = QLabel(f"Aporte Riqueza: ${node_data.wealth_gen:,}/turno")
@@ -102,6 +102,33 @@ class ContactDetailDialog(QDialog):
         # Añadir paneles al layout principal
         main_layout.addWidget(left_panel, 1)
         main_layout.addWidget(right_panel, 2)
+        main_layout.addWidget(self.create_side_panel(), 1)
+
+    def create_side_panel(self):
+        side_panel_frame = QFrame()
+        side_panel_frame.setObjectName("SidePanel")
+        side_panel_layout = QVBoxLayout(side_panel_frame)
+        side_panel_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        side_panel_layout.setSpacing(15)
+        
+        actions_header = QLabel("ACCIONES ESTRATÉGICAS")
+        actions_header.setObjectName("Header")
+        
+        btn_expand = QPushButton("Expandir Red")
+        btn_extract = QPushButton("Extraer Recursos")
+        btn_cover_up = QPushButton("Operación de Encubrimiento")
+        btn_neutralize = QPushButton("Neutralizar Amenaza")
+        
+
+        side_panel_layout.addWidget(actions_header)
+        side_panel_layout.addWidget(btn_expand)
+        side_panel_layout.addWidget(btn_extract)
+        side_panel_layout.addWidget(btn_cover_up)
+        side_panel_layout.addWidget(btn_neutralize)
+        side_panel_layout.addStretch()
+        
+        return side_panel_frame
+
 
 # --- NODO GRÁFICO PERSONALIZADO ---
 class GraphNodeItem(QGraphicsObject):
@@ -121,26 +148,21 @@ class GraphNodeItem(QGraphicsObject):
         }
 
     def boundingRect(self):
-        # Define el área clickeable y de dibujado del nodo
         return QRectF(-40, -40, 80, 80)
 
     def paint(self, painter: QPainter, option, widget=None):
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
-        
-        # Dibuja el círculo del nodo
         pen_color = self.status_colors.get(self.node_data.status, QColor("white"))
         pen = QPen(pen_color, 3)
         painter.setPen(pen)
         painter.setBrush(QBrush(QColor("#2C2C2C")))
         painter.drawEllipse(-35, -35, 70, 70)
-        
-        # Dibuja el nombre debajo del nodo
-        font = QFont("Roboto", 10)
+
+        font = QFont("Roboto", 7)
         painter.setFont(font)
         painter.setPen(QColor("#E0E0E0"))
         painter.drawText(self.boundingRect(), Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignBottom, self.node_data.name)
 
     def mousePressEvent(self, event):
-        # Emite una señal con sus datos cuando se le hace clic
         self.node_clicked.emit(self.node_data)
         super().mousePressEvent(event)

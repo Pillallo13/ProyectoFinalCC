@@ -13,4 +13,4 @@ class NodeData:
     influence_gen: int
     wealth_gen: int
     special_ability: str
-    image_path: str = "images/silhouette.png"
+    image_path: str = "frontEnd/images/silhouette.png"

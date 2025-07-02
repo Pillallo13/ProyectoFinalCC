@@ -1,4 +1,3 @@
-import sys
 from dataclasses import dataclass, field
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                              QHBoxLayout, QPushButton, QLabel, QStackedWidget, 
@@ -13,7 +12,7 @@ class GameModeSelection(QWidget):
     def __init__(self, switch_to_game):
         super().__init__()
         self.setObjectName("GameModeSelection")
-        self.background_image = QPixmap("images/imagen_background.png")
+        self.background_image = QPixmap("frontEnd/images/imagen_background.png")
         
         main_layout = QVBoxLayout()
         main_layout.setAlignment(Qt.AlignmentFlag.AlignTop)

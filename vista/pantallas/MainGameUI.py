@@ -1,55 +1,13 @@
-from dataclasses import dataclass, field
+from PyQt6.QtCore import QLineF, Qt
+from PyQt6.QtGui import QPainter, QPen, QColor
 from PyQt6.QtWidgets import *
-from PyQt6.QtGui import *
-from PyQt6.QtCore import *
-from vista.nodo import NodeData
-from vista.vista_arbol_nodo import GraphNodeItem, ContactDetailDialog
 
+from vista.grafo.GraphNodeItem import GraphNodeItem
+from vista.grafo.NodeData import NodeData
+from vista.ventanaStats.ContactDetailDialog import ContactDetailDialog
+from vista.pantallas.InteractiveView import InteractiveView
 
-class VistaInteractiva(QGraphicsView):
-    def __init__(self, scene, parent=None):
-        super().__init__(scene, parent)
-        self.setRenderHint(QPainter.RenderHint.Antialiasing)
-        self.setDragMode(QGraphicsView.DragMode.NoDrag)
-        self.setTransformationAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)
-        self.setResizeAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)
-        self._is_panning = False
-        self._pan_start = QPointF()
-
-    def wheelEvent(self, event):
-        zoom_in_factor = 1.15
-        zoom_out_factor = 1 / zoom_in_factor
-        if event.angleDelta().y() > 0:
-            zoom_factor = zoom_in_factor
-        else:
-            zoom_factor = zoom_out_factor
-        self.scale(zoom_factor, zoom_factor)
-
-    def mousePressEvent(self, event):
-        if event.button() == Qt.MouseButton.RightButton:
-            self._is_panning = True
-            self._pan_start = event.pos()
-            self.setCursor(Qt.CursorShape.ClosedHandCursor)
-        else:
-            super().mousePressEvent(event)
-
-    def mouseMoveEvent(self, event):
-        if self._is_panning:
-            delta = self.mapToScene(event.pos()) - self.mapToScene(self._pan_start)
-            self._pan_start = event.pos()
-            self.translate(-delta.x(), -delta.y())
-        else:
-            super().mouseMoveEvent(event)
-
-    def mouseReleaseEvent(self, event):
-        if event.button() == Qt.MouseButton.RightButton:
-            self._is_panning = False
-            self.setCursor(Qt.CursorShape.ArrowCursor)
-        else:
-            super().mouseReleaseEvent(event)
-
-# --- VISTA 3: PANTALLA PRINCIPAL DEL JUEGO ---
-class MainGameUI(QWidget):
+class MainGameUI (QWidget):
     def __init__(self, switch_to_defeat):
         super().__init__()
         self.setObjectName("MainGameUI")
@@ -66,7 +24,7 @@ class MainGameUI(QWidget):
 
         # Crear QGraphicsView
         self.scene = QGraphicsScene()
-        self.network_view = VistaInteractiva(self.scene)
+        self.network_view = InteractiveView(self.scene)
         self.network_view.setRenderHint(QPainter.RenderHint.Antialiasing)
 
         # Crear HUD flotante incrustado sobre el área de grafo
@@ -157,29 +115,3 @@ class MainGameUI(QWidget):
 
     def update_player_name(self, name):
         self.player_name_label.setText(f"Nombre Jugador: {name}")
-
-# --- VISTA 4: PANTALLA DE DERROTA ---
-class DefeatScreen(QWidget):
-    def __init__(self, switch_to_main_menu):
-        super().__init__()
-        self.setObjectName("DefeatScreen")
-
-        layout = QVBoxLayout(self)
-        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.setSpacing(20)
-
-        title = QLabel("CAÍDA EN DESGRACIA")
-        title.setStyleSheet("color: #D32F2F; font-size: 48px; font-weight: bold; font-family: 'Roboto Condensed';")
-        title.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.reason_label = QLabel("Causa: El Nivel de Sospecha ha alcanzado el 100%. La Fiscalía ha emitido una orden de captura.")
-        self.reason_label.setWordWrap(True)
-        self.reason_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        back_to_menu_button = QPushButton("VOLVER AL MENÚ PRINCIPAL")
-        back_to_menu_button.clicked.connect(switch_to_main_menu)
-
-        layout.addWidget(title)
-        layout.addWidget(self.reason_label)
-        layout.addSpacing(30)
-        layout.addWidget(back_to_menu_button, alignment=Qt.AlignmentFlag.AlignCenter)

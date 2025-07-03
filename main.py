@@ -2,11 +2,11 @@ import sys
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 
-# --- VISTAS ---
-from vista.vista_menu_principal import MainMenu, PlayerNameDialog
-from vista.vista_modo_juego import GameModeSelection
-from vista.vista_principal_juego import MainGameUI, DefeatScreen
-
+from vista.pantallas.DefeatScreen import DefeatScreen
+from vista.pantallas.GameModeSelection import GameModeSelection
+from vista.pantallas.MainGameUI import MainGameUI
+from vista.pantallas.MainMenu import MainMenu
+from vista.ventanaStats.PlayerNameDialog import PlayerNameDialog
 
 # --- VENTANA PRINCIPAL (GESTOR DE VISTAS) ---
 class MainWindow(QMainWindow):

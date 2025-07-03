@@ -1,16 +1,7 @@
-from PyQt6.QtWidgets import (
-    QApplication, QMainWindow, QWidget, QVBoxLayout, 
-    QHBoxLayout, QPushButton, QLabel, QStackedWidget, 
-    QFrame, QProgressBar, QDialog, QLineEdit,
-    QDialogButtonBox, QGraphicsView, QGraphicsScene,
-    QGraphicsObject, QGraphicsLineItem
-)
-from PyQt6.QtGui import (
-    QFont, QFontDatabase, QIcon, QPixmap, QPainter, QPalette, 
-    QBrush, QColor, QPen
-)
-from PyQt6.QtCore import Qt, QSize, QRectF, pyqtSignal, QPointF, QLineF
-from frontEnd.nodo import NodeData  
+from PyQt6.QtWidgets import *
+from PyQt6.QtGui import *
+from PyQt6.QtCore import *
+from vista.nodo import NodeData
 
 
 # --- NUEVA VENTANA DE DETALLES DEL CONTACTO ---
@@ -51,7 +42,7 @@ class ContactDetailDialog(QDialog):
         ability_frame = QFrame()
         ability_layout = QHBoxLayout(ability_frame)
         ability_icon = QLabel()
-        ability_icon.setPixmap(QPixmap("frontEnd/images/ability_icon.png").scaled(24, 24))
+        ability_icon.setPixmap(QPixmap("vista/assets/images/ability_icon.png").scaled(24, 24))
         ability_text = QLabel(node_data.special_ability)
         ability_layout.addWidget(ability_icon)
         ability_layout.addWidget(ability_text)

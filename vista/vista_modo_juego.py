@@ -1,18 +1,14 @@
 from dataclasses import dataclass, field
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
-                             QHBoxLayout, QPushButton, QLabel, QStackedWidget, 
-                             QFrame, QProgressBar, QDialog, QLineEdit,
-                             QDialogButtonBox, QGraphicsView, QGraphicsScene,
-                             QGraphicsObject, QGraphicsLineItem)
-from PyQt6.QtGui import (QFont, QFontDatabase, QIcon, QPixmap, QPainter, QPalette, 
-                         QBrush, QColor, QPen)
-from PyQt6.QtCore import Qt, QSize, QRectF, pyqtSignal, QPointF, QLineF
+from PyQt6.QtWidgets import *
+from PyQt6.QtGui import *
+from PyQt6.QtCore import *
+
 # --- VISTA 2: SELECCIÓN DE MODO DE JUEGO ---
 class GameModeSelection(QWidget):
     def __init__(self, switch_to_game):
         super().__init__()
         self.setObjectName("GameModeSelection")
-        self.background_image = QPixmap("frontEnd/images/imagen_background.png")
+        self.background_image = QPixmap("vista/assets/images/imagen_background.png")
         
         main_layout = QVBoxLayout()
         main_layout.setAlignment(Qt.AlignmentFlag.AlignTop)

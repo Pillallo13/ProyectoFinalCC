@@ -1,0 +1,129 @@
+/* === GENERAL BACKGROUND === */
+QWidget#MainMenu, QWidget#GameModeSelection, QWidget#DefeatScreen, QDialog {
+    background-color: #1A1A1A;
+}
+
+QWidget#MainGameUI {
+    background-color: #1A1A1A;
+}
+
+
+/* === LABELS === */
+QLabel {
+    color: #E0E0E0;
+    font-family: 'Roboto';
+    font-size: 16px;
+}
+
+QLabel#Title {
+    font-family: 'Roboto Condensed';
+    font-size: 48px;
+    font-weight: bold;
+    color: #E0E0E0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+QLabel#Subtitle {
+    font-family: 'Roboto';
+    font-size: 18px;
+    color: #AAAAAA;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+QLabel#Header {
+    font-family: 'Roboto Condensed';
+    font-size: 28px;
+    font-weight: bold;
+    color: #E0E0E0;
+}
+
+
+/* === BUTTONS === */
+QPushButton {
+    background-color: #2C2C2C;
+    border: 1px solid #888888;
+    color: #E0E0E0;
+    padding: 12px;
+    font-family: 'Roboto Condensed';
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 200px;
+}
+
+QPushButton:hover {
+    border: 1px solid #FFC107;
+    color: #FFC107;
+}
+
+QPushButton:pressed {
+    background-color: #FFC107;
+    color: #1A1A1A;
+}
+
+QPushButton#GoldenButton {
+    background-color: #FFC107;
+    color: #1A1A1A;
+    border: none;
+}
+
+QPushButton#GoldenButton:hover {
+    background-color: #ffca2c;
+}
+
+
+/* === FRAMES === */
+QFrame#Card, QFrame#HUD, QFrame#SidePanel {
+    background-color: #2C2C2C;
+    border-radius: 8px;
+}
+
+QFrame#Card:hover {
+    border: 1px solid #FFC107;
+}
+
+
+/* === INPUTS === */
+QLineEdit {
+    background-color: #444;
+    border: 1px solid #888;
+    padding: 8px;
+    color: #E0E0E0;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+/* === PROGRESS BARS === */
+QProgressBar {
+    border: 1px solid #555;
+    border-radius: 5px;
+    text-align: center;
+    color: #E0E0E0;
+    background-color: #444;
+    height: 22px;
+}
+
+QProgressBar::chunk {
+    background-color: #D32F2F; /* Rojo Peligro por defecto */
+    border-radius: 4px;
+}
+
+/* === BARRAS DE PROGRESO PERSONALIZADAS === */
+QProgressBar#LoyaltyBar::chunk {
+    background-color: #FFC107; /* Dorado */
+}
+
+QProgressBar#AmbitionBar::chunk {
+    background-color: #9C27B0; /* Púrpura */
+}
+
+
+/* === OTHERS === */
+QGraphicsView {
+    border: none;
+    background-color: #111;
+}

@@ -1,11 +1,12 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from vista.resources import IMAGES
 
 @dataclass
 class NodeData:
     id: int
     name: str
     level: str
-    status: str  # 'Activo', 'Bajo Sospecha', 'Investigado', 'Quemado'
+    status: str
     loyalty: int
     ambition: int
     risk: int
@@ -13,4 +14,4 @@ class NodeData:
     influence_gen: int
     wealth_gen: int
     special_ability: str
-    image_path: str = "vista/assets/images/silhouette.png"
+    image_path: str = (IMAGES["silhouette"])

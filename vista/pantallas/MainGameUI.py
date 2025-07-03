@@ -10,6 +10,12 @@ from vista.pantallas.InteractiveView import InteractiveView
 class MainGameUI (QWidget):
     def __init__(self, switch_to_defeat):
         super().__init__()
+        self.suspicion_label = None
+        self.suspicion_bar = None
+        self.influence_label = None
+        self.money_label = None
+        self.capital_label = None
+        self.player_name_label = None
         self.setObjectName("MainGameUI")
         self.switch_to_defeat = switch_to_defeat
 

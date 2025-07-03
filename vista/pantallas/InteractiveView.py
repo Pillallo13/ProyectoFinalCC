@@ -3,9 +3,9 @@ from PyQt6.QtGui import QPainter
 from PyQt6.QtCore import Qt, QPoint
 
 
-class InteractiveView(QGraphicsView):  # ← hereda de QGraphicsView
+class InteractiveView(QGraphicsView):
     def __init__(self, scene, parent=None):
-        super().__init__(scene, parent)  # ← válido para QGraphicsView
+        super().__init__(scene, parent)
         self.setRenderHint(QPainter.RenderHint.Antialiasing)
         self.setDragMode(QGraphicsView.DragMode.NoDrag)
         self.setTransformationAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)

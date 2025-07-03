@@ -2,7 +2,6 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 
-# --- VISTA 2: SELECCIÓN DE MODO DE JUEGO ---
 class GameModeSelection (QWidget):
     def __init__(self, switch_to_game):
         super().__init__()

@@ -1,8 +1,7 @@
 from PyQt6.QtCore import pyqtSignal, Qt, QRectF
-from PyQt6.QtGui import QColor, QPainter, QPen, QBrush, QFont
-from PyQt6.QtWidgets import QGraphicsObject
-
 from vista.grafo.NodeData import NodeData
+from PyQt6.QtWidgets import QGraphicsObject
+from PyQt6.QtGui import *
 
 
 class GraphNodeItem(QGraphicsObject):

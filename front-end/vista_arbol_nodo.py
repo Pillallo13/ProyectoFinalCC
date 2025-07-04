@@ -1,12 +1,10 @@
-import sys
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
-                             QHBoxLayout, QPushButton, QLabel, QStackedWidget, 
-                             QFrame, QProgressBar, QDialog, QLineEdit,
-                             QDialogButtonBox, QGraphicsView, QGraphicsScene,
-                             QGraphicsObject, QGraphicsLineItem)
-from PyQt6.QtGui import (QFont, QFontDatabase, QIcon, QPixmap, QPainter, QPalette, 
+from PyQt6.QtWidgets import (QVBoxLayout, 
+                             QHBoxLayout, QLabel, 
+                             QFrame, QProgressBar, QDialog,
+                             QGraphicsObject)
+from PyQt6.QtGui import (QFont, QPixmap, QPainter, 
                          QBrush, QColor, QPen)
-from PyQt6.QtCore import Qt, QSize, QRectF, pyqtSignal, QPointF, QLineF
+from PyQt6.QtCore import Qt, QRectF, pyqtSignal
 from nodo import NodeData  
 
 # --- NUEVA VENTANA DE DETALLES DEL CONTACTO ---

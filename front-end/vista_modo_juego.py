@@ -1,13 +1,8 @@
-import sys
-from dataclasses import dataclass, field
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
-                             QHBoxLayout, QPushButton, QLabel, QStackedWidget, 
-                             QFrame, QProgressBar, QDialog, QLineEdit,
-                             QDialogButtonBox, QGraphicsView, QGraphicsScene,
-                             QGraphicsObject, QGraphicsLineItem)
-from PyQt6.QtGui import (QFont, QFontDatabase, QIcon, QPixmap, QPainter, QPalette, 
-                         QBrush, QColor, QPen)
-from PyQt6.QtCore import Qt, QSize, QRectF, pyqtSignal, QPointF, QLineF
+from PyQt6.QtWidgets import (QWidget, QVBoxLayout, 
+                             QHBoxLayout, QLabel, 
+                             QFrame)
+from PyQt6.QtGui import (QPixmap, QPainter)
+from PyQt6.QtCore import Qt
 # --- VISTA 2: SELECCIÓN DE MODO DE JUEGO ---
 class GameModeSelection(QWidget):
     def __init__(self, switch_to_game):

@@ -1,10 +1,7 @@
-import sys
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
-                             QHBoxLayout, QPushButton, QLabel, QStackedWidget, 
-                             QFrame, QProgressBar, QDialog, QLineEdit,
+from PyQt6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QDialog, QLineEdit,
                              QDialogButtonBox)
-from PyQt6.QtGui import QFont, QFontDatabase, QIcon, QPixmap, QPainter, QPalette, QBrush
-from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtGui import QPixmap, QPainter
+from PyQt6.QtCore import Qt
 
 
 # --- VISTA 1: MENÚ PRINCIPAL (MODIFICADO) ---

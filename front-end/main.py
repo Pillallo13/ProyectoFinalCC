@@ -1,13 +1,7 @@
 import sys
 from dataclasses import dataclass, field
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
-                             QHBoxLayout, QPushButton, QLabel, QStackedWidget, 
-                             QFrame, QProgressBar, QDialog, QLineEdit,
-                             QDialogButtonBox, QGraphicsView, QGraphicsScene,
-                             QGraphicsObject, QGraphicsLineItem)
-from PyQt6.QtGui import (QFont, QFontDatabase, QIcon, QPixmap, QPainter, QPalette, 
-                         QBrush, QColor, QPen)
-from PyQt6.QtCore import Qt, QSize, QRectF, pyqtSignal, QPointF, QLineF
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QStackedWidget, QDialog)
+from PyQt6.QtGui import (QFontDatabase)
 
 # --- VISTAS ---
 # Importar las vistas desde sus respectivos archivos

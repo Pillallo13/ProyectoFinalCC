@@ -2,10 +2,11 @@ from PyQt6.QtCore import QLineF, Qt
 from PyQt6.QtGui import QPainter, QPen, QColor
 from PyQt6.QtWidgets import *
 
+from modelo.entidades.NodeData import NodeData
 from vista.grafo.GraphNodeItem import GraphNodeItem
-from vista.grafo.NodeData import NodeData
 from vista.ventanaStats.ContactDetailDialog import ContactDetailDialog
 from vista.pantallas.InteractiveView import InteractiveView
+from controlador.red_politica.NodoController import NodoController
 
 class MainGameUI (QWidget):
     def __init__(self, switch_to_defeat):
@@ -18,6 +19,7 @@ class MainGameUI (QWidget):
         self.player_name_label = None
         self.setObjectName("MainGameUI")
         self.switch_to_defeat = switch_to_defeat
+        self.controller = NodoController()
 
         # Layout principal
         main_layout = QVBoxLayout(self)
@@ -91,9 +93,9 @@ class MainGameUI (QWidget):
         return hud_widget
 
     def populate_network_example(self):
-        node1_data = NodeData(1, "Alcalde Mermelada", "Alcalde", "Activo", 80, 50, 10, 50000, 5, 10000, "Contratación Amañada")
-        node2_data = NodeData(2, "Concejal Tuerquilla", "Concejal", "Bajo Sospecha", 60, 75, 40, 20000, 2, 5000, "Compra de Votos")
-        node3_data = NodeData(3, "Juez Prevaricatore", "Juez", "Investigado", 30, 90, 85, 150000, 10, 0, "Bloquear Investigación")
+        node1_data = self.controller.buscar_por_id(1)
+        node2_data = self.controller.buscar_por_id(2)
+        node3_data = self.controller.buscar_por_id(3)
 
         node1_item = GraphNodeItem(node1_data)
         node2_item = GraphNodeItem(node2_data)

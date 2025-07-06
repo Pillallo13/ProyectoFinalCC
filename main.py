@@ -56,7 +56,6 @@ class MainWindow(QMainWindow):
         self.stacked_widget.setCurrentWidget(self.game_mode_selection)
 
     def switch_to_game(self, mode):
-        print(f"Iniciando juego en modo: {mode} para el jugador: {self.player_name}")
         self.main_game_ui.update_player_name(self.player_name)
         self.stacked_widget.setCurrentWidget(self.main_game_ui)
 

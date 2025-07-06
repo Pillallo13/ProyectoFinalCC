@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import *
 
 class DefeatScreen(QWidget):
     def __init__(self, switch_to_main_menu):
-        super().__init__()  # ← llama al constructor de QWidget
+        super().__init__()
         self.setObjectName("DefeatScreen")
 
         layout = QVBoxLayout(self)

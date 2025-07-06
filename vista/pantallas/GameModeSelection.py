@@ -52,7 +52,7 @@ class GameModeSelection (QWidget):
         card.setCursor(Qt.CursorShape.PointingHandCursor)
         
         card_layout = QVBoxLayout(card)
-        card_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        card_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         title = QLabel(title_text)
         title.setStyleSheet("color: #FFC107; font-weight: bold; font-size: 20px;")

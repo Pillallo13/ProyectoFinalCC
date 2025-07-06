@@ -3,8 +3,6 @@ from PyQt6.QtGui import *
 from PyQt6.QtCore import Qt
 from vista.resources import IMAGES
 
-
-# --- VISTA 1: MENÚ PRINCIPAL (MODIFICADO) ---
 class MainMenu (QWidget):
     def __init__(self, start_new_game_flow):
         super().__init__()

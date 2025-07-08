@@ -3,7 +3,7 @@ QWidget#MainMenu, QWidget#GameModeSelection, QWidget#DefeatScreen, QDialog {
     background-color: #1A1A1A;
 }
 
-QWidget#MainGameUI {
+QWidget#MainGameHistoriaUI {
     background-color: #1A1A1A;
 }
 

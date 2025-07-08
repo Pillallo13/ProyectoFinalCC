@@ -1,0 +1,177 @@
+{
+  "main": {
+    "id": "7a9d8be651888607",
+    "type": "split",
+    "children": [
+      {
+        "id": "1ee3f56e0a8da9cc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5769179de31ed59a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "documentacion/Documentación archivos jason.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Documentación archivos jason"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "293765acaf267f3f",
+    "type": "split",
+    "children": [
+      {
+        "id": "2f70203f8f1e91f6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5dc61ed910f6468a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "0ed1b105f40335fc",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "a69278e4a43f3293",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "45f2530855e5db27",
+    "type": "split",
+    "children": [
+      {
+        "id": "2fcb760f43d0a8c9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2495418609aae3b1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "documentacion/Documentación archivos jason.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Documentación archivos jason"
+            }
+          },
+          {
+            "id": "e6040539e2748249",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "documentacion/Documentación archivos jason.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Documentación archivos jason"
+            }
+          },
+          {
+            "id": "705b8630bf392478",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "79ddb6dd6b6ef970",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "documentacion/Documentación archivos jason.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Documentación archivos jason"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "5769179de31ed59a",
+  "lastOpenFiles": [
+    "Untitled.md",
+    "documentacion/Documentación archivos jason.md",
+    "documentacion"
+  ]
+}

@@ -2,12 +2,13 @@ from PyQt6.QtCore import QLineF, Qt
 from PyQt6.QtGui import QPainter, QPen, QColor
 from PyQt6.QtWidgets import *
 
-from modelo.entidades.NodeData import NodeData
+from controlador.campanna.PersonajeController import PersonajeController
+from modelo.entidades.campanna.NodeData import NodeData
 from vista.grafo.GraphNodeItem import GraphNodeItem
 from vista.ventana.ContactDetailDialog import ContactDetailDialog
 from vista.pantallas.elementosGlobales.InteractiveView import InteractiveView
-from controlador.red_politica.NodoController import NodoController
-
+from controlador.campanna.NodoController import NodoController
+from controlador.biografia.BiografiaController import BiografiaController
 
 class MainGameHistoriaUI(QWidget):
     """
@@ -42,6 +43,7 @@ class MainGameHistoriaUI(QWidget):
 
         self.switch_to_defeat = switch_to_defeat
         self.controller = NodoController()
+        self.BiografiaController = BiografiaController()
 
         # Inicialización explícita de referencias
         self.player_name_label = None
@@ -50,7 +52,7 @@ class MainGameHistoriaUI(QWidget):
         self.influence_label = None
         self.suspicion_label = None
         self.suspicion_bar = None
-
+        self.PersonajeController = None
         # Layout general
         main_layout = QVBoxLayout(self)
 
@@ -73,14 +75,6 @@ class MainGameHistoriaUI(QWidget):
         graphics_layout.addWidget(self.network_view)
         main_layout.addWidget(graphics_container, 1)
 
-        # Barra inferior con el botón de finalizar turno
-        bottom_bar = QHBoxLayout()
-        bottom_bar.addStretch()
-        self.btn_end_turn = QPushButton("FINALIZAR TURNO")
-        self.btn_end_turn.setObjectName("GoldenButton")
-        bottom_bar.addWidget(self.btn_end_turn)
-        main_layout.addLayout(bottom_bar)
-
         # Renderizar nodos iniciales
         self.populate_network_example()
 
@@ -97,7 +91,8 @@ class MainGameHistoriaUI(QWidget):
         hud_layout.setContentsMargins(12, 12, 12, 12)
         hud_layout.setSpacing(8)
 
-        self.player_name_label = QLabel("Nombre Jugador: El Gran Maquiavelo de los Llanos")
+
+        self.player_name_label = QLabel(PersonajeController.nombre_completo)
         self.player_name_label.setStyleSheet("font-weight: bold; color: white;")
         self.capital_label = QLabel("Capital Político: 1,000,000")
         self.money_label = QLabel("Dinero Sucio: $500,000")
@@ -129,36 +124,104 @@ class MainGameHistoriaUI(QWidget):
 
     def populate_network_example(self):
         """
-        Agrega los nodos de ejemplo a la escena del grafo.
-
-        Obtiene los datos desde el controlador y los convierte en elementos visuales,
-        incluyendo conexiones entre ellos.
+        Dibuja todos los nodos desde el controller, sin conexiones.
+        Distribuye los nodos en el espacio, considerando un diámetro de 80 px
+        y una distancia mínima de separación entre centros.
         """
-        node1_data = self.controller.buscar_por_id(1)
-        node2_data = self.controller.buscar_por_id(2)
-        node3_data = self.controller.buscar_por_id(3)
+        from math import hypot
+        import random
 
-        node1_item = GraphNodeItem(node1_data)
-        node2_item = GraphNodeItem(node2_data)
-        node3_item = GraphNodeItem(node3_data)
+        self.scene.clear()
+        self.scene.setSceneRect(-2000, -2000, 4000, 4000)
+        self.items_por_id = {}
+        self.posiciones_ocupadas = []
 
-        node1_item.setPos(0, -150)
-        node2_item.setPos(-150, 0)
-        node3_item.setPos(150, 0)
+        nodos = self.controller.obtener_todos()
 
-        # Conectar señales para mostrar detalles
-        node1_item.node_clicked.connect(self.show_contact_details)
-        node2_item.node_clicked.connect(self.show_contact_details)
-        node3_item.node_clicked.connect(self.show_contact_details)
+        # Configuración visual
+        diametro_nodo = 80
+        separacion_extra = 10
+        distancia_minima = diametro_nodo + separacion_extra  # 120 px entre centros
+        ancho_area, alto_area = 1000, 1000
+        padding = distancia_minima
 
-        # Añadir nodos y conexiones al grafo
-        self.scene.addItem(node1_item)
-        self.scene.addItem(node2_item)
-        self.scene.addItem(node3_item)
+        def es_posicion_valida(x, y):
+            for px, py in self.posiciones_ocupadas:
+                if hypot(x - px, y - py) < distancia_minima:
+                    return False
+            return True
 
-        pen = QPen(QColor("#555"), 2, Qt.PenStyle.SolidLine)
-        self.scene.addLine(QLineF(node1_item.pos(), node2_item.pos()), pen)
-        self.scene.addLine(QLineF(node1_item.pos(), node3_item.pos()), pen)
+        for nodo in nodos:
+            for _ in range(100):  # intenta 100 veces una buena posición
+                x = random.randint(-ancho_area // 2 + padding, ancho_area // 2 - padding)
+                y = random.randint(-alto_area // 2 + padding, alto_area // 2 - padding)
+                if es_posicion_valida(x, y):
+                    self.posiciones_ocupadas.append((x, y))
+                    break
+            else:
+                # si no encuentra una válida, lo pone en algún lugar aleatorio sin validar
+                x, y = random.randint(-2000, 2000), random.randint(-2000, 2000)
+
+            node_item = GraphNodeItem(nodo)
+            node_item.setPos(x, y)
+            node_item.node_clicked.connect(self.show_contact_details)
+            self.scene.addItem(node_item)
+            self.items_por_id[nodo.id] = node_item
+
+        # === 2. Dibujar conexiones entre los nodos ===
+
+        for nodo in nodos:
+            origen_item = self.items_por_id.get(nodo.id)
+            for conexion in nodo.connected_to:
+                if isinstance(conexion, dict):
+                    destino_id = conexion.get("target_id")
+                    peso = conexion.get("peso", 0)
+                    tipo = conexion.get("tipo", "positiva")
+                else:
+                    destino_id = conexion
+                    peso = 0
+                    tipo = "positiva"
+
+                destino_item = self.items_por_id.get(destino_id)
+                if origen_item and destino_item:
+                    # Establecer el color basado en el valor de peso
+                    color = QColor("#00aa00") if peso > 0 else QColor(
+                        "#aa0000")  # Verde si es positivo, Rojo si es negativo
+
+                    # Definir grosor de la línea basado en el valor absoluto del peso
+                    pen = QPen(color, 2 + abs(peso) / 50, Qt.PenStyle.SolidLine)
+
+                    # Línea principal
+                    linea = QLineF(origen_item.pos(), destino_item.pos())
+                    self.scene.addLine(linea, pen)
+
+                    # Flecha
+                    from PyQt6.QtCore import QPointF
+                    from PyQt6.QtGui import QPolygonF, QBrush
+
+                    # Coordenadas de inicio y fin
+                    start = linea.p1()
+                    end = linea.p2()
+
+                    # Vector unitario de dirección
+                    dx = end.x() - start.x()
+                    dy = end.y() - start.y()
+                    length = (dx ** 2 + dy ** 2) ** 0.5
+                    if length == 0:
+                        return
+
+                    ux = dx / length
+                    uy = dy / length
+                    arrow_size = 10
+
+                    # Puntos de la flecha
+                    p1 = QPointF(end.x() - arrow_size * ux + arrow_size * uy / 2,
+                                 end.y() - arrow_size * uy - arrow_size * ux / 2)
+                    p2 = QPointF(end.x() - arrow_size * ux - arrow_size * uy / 2,
+                                 end.y() - arrow_size * uy + arrow_size * ux / 2)
+
+                    flecha = QPolygonF([end, p1, p2])
+                    self.scene.addPolygon(flecha, pen, QBrush(color))
 
     def show_contact_details(self, node_data: NodeData):
         """
@@ -170,11 +233,13 @@ class MainGameHistoriaUI(QWidget):
         dialog = ContactDetailDialog(node_data, self)
         dialog.exec()
 
-    def update_player_name(self, name: str):
+    def update_player_name(self):
         """
-        Actualiza el nombre del jugador en el HUD.
+        Actualiza el nombre del jugador en el HUD con el nombre cargado desde el controlador.
+        """
+        # Obtener el nombre del jugador desde el controlador BiografiaController
+        nombre_jugador = self.BiografiaController.obtener_nombre_jugador()
 
-        Args:
-            name (str): Nuevo nombre del jugador.
-        """
-        self.player_name_label.setText(f"Nombre Jugador: {name}")
+        # Actualizar el texto del label en el HUD con el nombre del jugador
+        self.player_name_label.setText(f"{nombre_jugador}")
+

@@ -1,7 +1,7 @@
 import os
 import json
-from modelo.entidades.PersonajeData import PersonajeData
-from modelo.entidades.EventosData import EventosData
+from modelo.entidades.campanna.PersonajeData import PersonajeData
+from modelo.entidades.campanna.EventosData import EventoData
 
 class BiografiaController:
     def __init__(self, path_json=None):
@@ -23,12 +23,16 @@ class BiografiaController:
 
             # Cargar eventos como lista de dataclasses
             self._eventos = [
-                EventosData(id_evento=e["id_evento"], texto=e["texto"])
+                EventoData(id_evento=e["id_evento"], texto=e["texto"])
                 for e in data["relato"]
             ]
 
     def get_personaje(self):
         return self._personaje
+
+    def obtener_nombre_jugador(self):
+        """Devuelve el nombre completo del jugador directamente desde el JSON."""
+        return self._personaje.nombre_completo  # Acceder como atributo de la instancia, no como un diccionario
 
     def buscar_evento_por_id(self, id_evento: str):
         """

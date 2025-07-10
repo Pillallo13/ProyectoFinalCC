@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "name": "Nodo 1",
+    "level": "Alto",
+    "bribe_cost": 0,
+    "influence_gen": 10,
+    "wealth_gen": 5,
+    "loyalty": 70,
+    "ambition": 60,
+    "risk": 30,
+    "special_ability": "Ninguna",
+    "status": "Activo",
+    "acepta_sobornos": true,
+    "parent_id": null,
+    "subordinados": [],
+    "image_path": "nodo1.jpg",
+    "moral": 0,
+    "connected_to": []
+  },
+  {
+    "id": 2,
+    "name": "Nodo 2",
+    "level": "Medio",
+    "bribe_cost": 10,
+    "influence_gen": 5,
+    "wealth_gen": 3,
+    "loyalty": 50,
+    "ambition": 40,
+    "risk": 25,
+    "special_ability": "Manipulación",
+    "status": "Activo",
+    "acepta_sobornos": true,
+    "parent_id": null,
+    "subordinados": [],
+    "image_path": "nodo2.jpg",
+    "moral": 0,
+    "connected_to": []
+  }
+]

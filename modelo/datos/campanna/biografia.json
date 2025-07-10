@@ -1,0 +1,109 @@
+{
+	"nombre": "Álvaro Uribe Vélez",
+	"fecha_nacimiento": "1952-07-04",
+	"lugar_nacimiento": "Medellín, Antioquia, Colombia",
+	"profesion": "Abogado y político",
+	"partido_politico": "Centro Democrático",
+	"hechos_importantes": [
+		{
+			"año": 1982,
+			"evento": "Es nombrado Director de la Aeronáutica Civil de Colombia durante el gobierno de Belisario Betancur.",
+			"impacto": "Supuestamente usa helicopteros de Pablo Ecobar para movilizarse y da licencias que facilitaron las rutas de coca de Pablo Escobar",
+			"PopUp": {
+				"personaje": "Pablo Escobar",
+				"texto": "Mijito, como me le va? ¿Le gustaron los helicópteros que le presté? Espero que le hayan servido para sus viajes y que me ayude con los mios",
+				"opciones": [
+					{
+						"texto": "Claro que sí, Pablito. Los helicópteros son excelentes y me han facilitado mucho el trabajo. No se precupe por sus viajes.",
+						"respuesta": "Pablo Escobar sonríe y dice: 'Me alegra saberlo mijito. Siempre es bueno tener aliados en el cielo.'"
+					},
+					{
+						"texto": "Gracias, Pablo. Los helicópteros son muy útiles para mis desplazamientos. Pero no se va a poder lo de los viajes, eso ya me compromete mucho.",
+						"respuesta": "Pablo Escobar lo mira despectivamente y responde: 'No te preocupes, mijito. Siempre hay formas de solucionar los problemas. Pero recuerda que la lealtad es importante.'"
+					}
+				]
+			},
+			"textoDerrota": "Álvaro Uribe Vélez, en su papel como Director de la Aeronáutica Civil, se suicido con 7 tiros en la espalda tras ser vinculado a Pablo Escobar, lo que manchó su reputación desde el inicio de su carrera política."
+		},
+		{
+			"año": 1986,
+			"evento": "Es elegido alcalde de Medellín, aunque solo permaneció en el cargo cinco meses.",
+			"impacto": "Es presionado por el presidente a Dimitir por conexiones con el cartel de Medellín.",
+			"PopUp": {
+				"personaje": "Belisario Betancur ",
+				"texto": "Alvaro, chinaso, Necesito que te me bajes del cargo, no ves que todo el hpta mundo sabe que tienes conexiones con el cartel de Medellín y eso me puede estar afectando.",
+				"opciones": [
+					{
+						"texto": "No señor presidente, yo no tengo nada que ver con el cartel de Medellín, solo he estado trabajando por la ciudad.",
+						"respuesta": "Belisario Betancur lo mira fijamente y dice: 'Alvaro, no me hagas perder más tiempo. La situación es insostenible.'"
+					},
+					{
+						"texto": "Entiendo, señor presidente. Haré lo que sea necesario para proteger su gobierno y mi carrera política.",
+						"respuesta": "Belisario Betancur asiente y dice: 'Eso espero, Alvaro. La lealtad es clave en estos momentos.'"
+					}
+				]
+			},
+			"textoDerrota": "Álvaro Uribe Vélez, en su papel como Director de la Aeronáutica Civil, se vio envuelto en una controversia por sus supuestas conexiones con Pablo Escobar, lo que manchó su reputación desde el inicio de su carrera política."
+		},
+		{
+			"año": 1991,
+			"evento": "Elegido senador de la República de Colombia.",
+			"impacto": "Inicia su carrera política a nivel nacional y se convierte en una figura influyente en el Congreso.",
+			"PopUp": {
+				"personaje": "Cabeza del partido Liberal",
+				"texto": "Alvaro, felicidades por tu elección como senador. Espero que trabajes duro por el bienestar del país y que no te dejes llevar por intereses personales.",
+				"opciones": [
+					{
+						"texto": "Gracias señor. Estoy comprometido con el bienestar de Colombia y haré todo lo posible para servir a mi país.",
+						"respuesta": "Cabeza del partido Liberal sonríe y dice: 'Eso espero, Alvaro. La política es un juego complicado, pero confío en que harás lo correcto.'"
+					},
+					{
+						"texto": "Gracias, señor. Estoy aquí para servir a Colombia y no me dejaré llevar tanto por intereses personales.",
+						"respuesta": "Cabeza del partido Liberal asiente y dice: 'Eso espero, Alvarito. La política es un juego complicado, pero confío en que harás lo correcto.'"
+					}
+				]
+			},
+			"textoDerrota": "Álvaro Uribe Vélez, en su papel como senador, no se preocupo por los intereses correctos, lo que manchó su reputación desde el inicio de su carrera política."
+		},
+		{
+			"año": 2002,
+			"evento": "Es elegido Presidente de Colombia por primera vez con una propuesta de seguridad democrática.",
+			"impacto": "Implementa una política de mano dura contra grupos armados ilegales y obtiene amplio respaldo popular.",
+			"PopUp": {
+				"personaje": "Carlos Sarmiento Angulo",
+				"texto": "Alvaro, felicidades por tu elección como presidente. Espero que trabajes duro por el bienestar de mis intereses",
+				"opciones": [
+					{
+						"texto": "Si señor, no se procupe que sus intereses estarán bien cuidados.",
+						"respuesta": "Carlos Sarmiento Angulo sonríe y dice: 'Eso espero, Alvaro. La política es un juego complicado, pero confío en que harás lo correcto.'"
+					},
+					{
+						"texto": "Gracias, señor. Estoy aquí para servir a Colombia y no me dejaré llevar tanto por intereses personales.",
+						"respuesta": "Cabeza del partido Liberal asiente y dice: 'Eso espero, Alvarito. La política es un juego complicado, pero confío en que harás lo correcto.'"
+					}
+				]
+			},
+			"textoDerrota": "Álvaro Uribe Vélez, despues de no aprobar politicas economicas que subian la tasa de uzura, en su papel como presidente, se vio obligado a renunciar tras un escándalo de corrupción."
+		},
+		{
+			"año": 2010,
+			"evento": "Su pupilo politico Santos, es elegido presidente de Colombia.",
+			"impacto": "Santos lo traiciona al no continuar con su política de seguridad democrática y abrir un proceso de paz con las FARC."
+		},
+		{
+			"año": 2014,
+			"evento": "Funda el partido Centro Democrático y es elegido senador.",
+			"impacto": "Vuelve a la vida política activa como líder de oposición al proceso de paz con las FARC."
+		},
+		{
+			"año": 2020,
+			"evento": "Renuncia al Senado tras una investigación de la Corte Suprema de Justicia.",
+			"impacto": "Es vinculado a un caso de manipulación de testigos, lo que marca un giro importante en su vida política."
+		},
+		{
+			"año": 2023,
+			"evento": "Continúa siendo una figura influyente en la política colombiana, aunque con menor protagonismo que en años anteriores.",
+			"impacto": "Su legado sigue siendo objeto de intenso debate público y para saber como caera su imagen se debe poner 5.0 en este proyecto."
+		}
+	]
+}

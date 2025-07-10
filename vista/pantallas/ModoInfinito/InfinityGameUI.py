@@ -2,11 +2,11 @@ from PyQt6.QtCore import QLineF, Qt
 from PyQt6.QtGui import QPainter, QPen, QColor
 from PyQt6.QtWidgets import *
 
-from modelo.entidades.NodeData import NodeData
+from modelo.entidades.campanna.NodeData import NodeData
 from vista.grafo.GraphNodeItem import GraphNodeItem
 from vista.ventana.ContactDetailDialog import ContactDetailDialog
 from vista.pantallas.elementosGlobales.InteractiveView import InteractiveView
-from controlador.red_politica.NodoController import NodoController
+from controlador.campanna.NodoController import NodoController
 
 
 class MainGameUI(QWidget):

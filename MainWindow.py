@@ -96,7 +96,7 @@ class MainWindow(QMainWindow):
         """
         if player_name:
             self.player_name = player_name
-        self.main_game_ui.update_player_name(self.player_name)
+        self.main_game_ui.update_player_name()
         self.stacked_widget.setCurrentWidget(self.main_game_ui)
 
     def switch_to_defeat(self):

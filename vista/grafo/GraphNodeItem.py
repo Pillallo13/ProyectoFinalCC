@@ -1,5 +1,5 @@
 from PyQt6.QtCore import pyqtSignal, Qt, QRectF
-from modelo.entidades.NodeData import NodeData
+from modelo.entidades.campanna.NodeData import NodeData
 from PyQt6.QtWidgets import QGraphicsObject
 from PyQt6.QtGui import *
 

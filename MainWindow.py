@@ -2,6 +2,7 @@ import sys
 from PyQt6.QtWidgets import (QApplication,QMainWindow,QStackedWidget)
 from PyQt6.QtGui import QFontDatabase
 
+
 # Importaciones de vistas y pantallas
 from vista.pantallas.elementosGlobales.DefeatScreen import DefeatScreen
 from vista.pantallas.elementosGlobales.GameModeSelection import GameModeSelection

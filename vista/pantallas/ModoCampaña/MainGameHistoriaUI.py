@@ -176,11 +176,9 @@ class MainGameHistoriaUI(QWidget):
                 if isinstance(conexion, dict):
                     destino_id = conexion.get("target_id")
                     peso = conexion.get("peso", 0)
-                    tipo = conexion.get("tipo", "positiva")
                 else:
                     destino_id = conexion
                     peso = 0
-                    tipo = "positiva"
 
                 destino_item = self.items_por_id.get(destino_id)
                 if origen_item and destino_item:

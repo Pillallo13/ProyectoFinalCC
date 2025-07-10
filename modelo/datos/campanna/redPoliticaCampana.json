@@ -13,7 +13,9 @@
     "status": "Activo",
     "acepta_sobornos": true,
     "parent_id": null,
-    "subordinados": [2, 3, 4, 7, 8, 11],
+    "subordinados": [
+      2, 3, 4, 7, 8, 11
+    ],
     "connected_to": [],
     "image_path": "vista/assets/images/alcalde.png"
   },
@@ -31,8 +33,12 @@
     "special_ability": "Compra de Votos",
     "acepta_sobornos": true,
     "parent_id": 1,
-    "subordinados": [5, 9],
-    "connected_to": [1],
+    "subordinados": [
+      5, 9
+    ],
+    "connected_to": [
+      {"target_id": 1, "peso": 10}
+    ],
     "image_path": "vista/assets/images/concejal.png"
   },
   {
@@ -86,7 +92,9 @@
     "acepta_sobornos": true,
     "parent_id": 2,
     "subordinados": [],
-    "connected_to": [1],
+    "connected_to": [
+      {"target_id": 1, "peso": 8}
+    ],
     "image_path": "vista/assets/images/asesor.png"
   },
   {
@@ -103,8 +111,12 @@
     "status": "Activo",
     "acepta_sobornos": true,
     "parent_id": 3,
-    "subordinados": [10],
-    "connected_to": [1],
+    "subordinados": [
+      10
+    ],
+    "connected_to": [
+      {"target_id": 1, "peso": 7}
+    ],
     "image_path": "vista/assets/images/abogado.png"
   },
   {
@@ -122,7 +134,9 @@
     "acepta_sobornos": true,
     "parent_id": 1,
     "subordinados": [],
-    "connected_to": [1],
+    "connected_to": [
+      {"target_id": 1, "peso": 7}
+    ],
     "image_path": "vista/assets/images/empresario.png"
   },
   {
@@ -140,7 +154,9 @@
     "acepta_sobornos": true,
     "parent_id": 1,
     "subordinados": [],
-    "connected_to": [1],
+    "connected_to": [
+      {"target_id": 1, "peso": -7}
+    ],
     "image_path": "vista/assets/images/periodista.png"
   },
   {
@@ -157,8 +173,12 @@
     "status": "Activo",
     "acepta_sobornos": true,
     "parent_id": 2,
-    "subordinados": [13],
-    "connected_to": [1],
+    "subordinados": [
+      13
+    ],
+    "connected_to": [
+      {"target_id": 1, "peso": 6}
+    ],
     "image_path": "vista/assets/images/director.png"
   },
   {
@@ -176,7 +196,9 @@
     "acepta_sobornos": true,
     "parent_id": 6,
     "subordinados": [],
-    "connected_to": [1],
+    "connected_to": [
+      {"target_id": 1, "peso": 6}
+    ],
     "image_path": "vista/assets/images/contador.png"
   },
   {
@@ -193,8 +215,12 @@
     "status": "Activo",
     "acepta_sobornos": true,
     "parent_id": 1,
-    "subordinados": [12],
-    "connected_to": [1],
+    "subordinados": [
+      12
+    ],
+    "connected_to": [
+      {"target_id": 1, "peso": 6}
+    ],
     "image_path": "vista/assets/images/interventor.png"
   },
   {
@@ -212,7 +238,9 @@
     "acepta_sobornos": true,
     "parent_id": 11,
     "subordinados": [],
-    "connected_to": [1],
+    "connected_to": [
+      {"target_id": 1, "peso": 5}
+    ],
     "image_path": "vista/assets/images/funcionario.png"
   },
   {
@@ -230,7 +258,9 @@
     "acepta_sobornos": true,
     "parent_id": 9,
     "subordinados": [],
-    "connected_to": [1],
+    "connected_to": [
+      {"target_id": 1, "peso": 5}
+    ],
     "image_path": "vista/assets/images/inspector.png"
   }
 ]

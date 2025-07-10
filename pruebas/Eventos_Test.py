@@ -1,4 +1,4 @@
-from controlador.biografia.BiografiaController import BiografiaController
+from controlador.campanna.BiografiaController import BiografiaController
 
 # Crear instancia del controlador
 controller = BiografiaController()

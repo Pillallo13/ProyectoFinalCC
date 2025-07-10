@@ -6,8 +6,11 @@ from modelo.entidades.campanna.EventosData import EventoData
 class BiografiaController:
     def __init__(self, path_json=None):
         if path_json is None:
+            # base_dir = carpeta actual
             base_dir = os.path.dirname(os.path.abspath(__file__))
-            path_json = os.path.normpath(os.path.join(base_dir, "../../modelo/datos/biografia.json"))
+            # Subir dos niveles para encontrar el archivo JSON
+            path_json = os.path.normpath(
+                os.path.join(base_dir, "..", "..", "modelo", "datos", "campanna", "redPoliticaCampana.json"))
 
         self.path_json = path_json
         self._personaje = None

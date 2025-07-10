@@ -8,7 +8,7 @@ from vista.grafo.GraphNodeItem import GraphNodeItem
 from vista.ventana.ContactDetailDialog import ContactDetailDialog
 from vista.pantallas.elementosGlobales.InteractiveView import InteractiveView
 from controlador.campanna.NodoController import NodoController
-from controlador.biografia.BiografiaController import BiografiaController
+from controlador.campanna.BiografiaController import BiografiaController
 
 class MainGameHistoriaUI(QWidget):
     """

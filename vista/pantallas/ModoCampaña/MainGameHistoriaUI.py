@@ -1,6 +1,9 @@
 from PyQt6.QtCore import QLineF, Qt
 from PyQt6.QtGui import QPainter, QPen, QColor
 from PyQt6.QtWidgets import *
+from PyQt6.QtCore import pyqtSignal, QPointF
+from PyQt6.QtWidgets import QGraphicsView
+from PyQt6.QtGui import QWheelEvent, QMouseEvent
 
 from controlador.campanna.PersonajeController import PersonajeController
 from modelo.entidades.campanna.NodeData import NodeData
@@ -13,31 +16,9 @@ from controlador.biografia.BiografiaController import BiografiaController
 class MainGameHistoriaUI(QWidget):
     """
     Vista principal del juego.
-
-    Esta clase representa la interfaz principal durante una partida.
-    Contiene el área del grafo con los personajes corruptos, un HUD con estadísticas
-    del jugador y un botón para finalizar turno.
-
-    Se encarga de renderizar los nodos y sus conexiones, así como permitir al
-    jugador consultar los detalles de cada contacto corrupto.
-
-    Atributos:
-        switch_to_defeat (callable): Función para cambiar a la pantalla de derrota.
-        controller (NodoController): Controlador que gestiona el acceso a los datos de nodos.
-        player_name_label (QLabel): Etiqueta que muestra el nombre del jugador.
-        capital_label (QLabel): Muestra el capital político actual.
-        money_label (QLabel): Muestra el dinero sucio disponible.
-        influence_label (QLabel): Muestra los puntos de influencia.
-        suspicion_bar (QProgressBar): Barra de nivel de sospecha.
     """
 
     def __init__(self, switch_to_defeat):
-        """
-        Inicializa la interfaz principal del juego.
-
-        Args:
-            switch_to_defeat (callable): Función que cambia la vista a la pantalla de derrota.
-        """
         super().__init__()
         self.setObjectName("MainGameHistoriaUI")
 
@@ -45,46 +26,53 @@ class MainGameHistoriaUI(QWidget):
         self.controller = NodoController()
         self.BiografiaController = BiografiaController()
 
-        # Inicialización explícita de referencias
         self.player_name_label = None
         self.capital_label = None
         self.money_label = None
         self.influence_label = None
         self.suspicion_label = None
         self.suspicion_bar = None
+<<<<<<< HEAD
         self.PersonajeController = None
         # Layout general
+=======
+
+>>>>>>> a6e6fe334f337b8794a2ac8fc92bfe686c60de0a
         main_layout = QVBoxLayout(self)
 
-        # Contenedor del grafo
         graphics_container = QFrame(self)
         graphics_layout = QVBoxLayout(graphics_container)
         graphics_layout.setContentsMargins(0, 0, 0, 0)
         graphics_layout.setSpacing(0)
 
-        # Vista del grafo
         self.scene = QGraphicsScene()
         self.network_view = InteractiveView(self.scene)
         self.network_view.setRenderHint(QPainter.RenderHint.Antialiasing)
 
-        # HUD flotante sobre la vista del grafo
         self.overlay_hud = self.create_overlay_hud()
         self.overlay_hud.setParent(self.network_view.viewport())
         self.overlay_hud.move(10, 10)
 
+        # Conectar señal para que el HUD se mueva con la vista
+        self.network_view.view_changed.connect(self.update_hud_position)
+
         graphics_layout.addWidget(self.network_view)
         main_layout.addWidget(graphics_container, 1)
 
+<<<<<<< HEAD
         # Renderizar nodos iniciales
+=======
+        bottom_bar = QHBoxLayout()
+        bottom_bar.addStretch()
+        self.btn_end_turn = QPushButton("FINALIZAR TURNO")
+        self.btn_end_turn.setObjectName("GoldenButton")
+        bottom_bar.addWidget(self.btn_end_turn)
+        main_layout.addLayout(bottom_bar)
+
+>>>>>>> a6e6fe334f337b8794a2ac8fc92bfe686c60de0a
         self.populate_network_example()
 
     def create_overlay_hud(self) -> QFrame:
-        """
-        Crea el HUD flotante que muestra los datos del jugador.
-
-        Returns:
-            QFrame: Widget con estadísticas superpuestas al grafo.
-        """
         hud_widget = QFrame()
         hud_widget.setObjectName("MiniHUD")
         hud_layout = QVBoxLayout(hud_widget)
@@ -122,14 +110,26 @@ class MainGameHistoriaUI(QWidget):
         hud_widget.setFixedSize(240, 190)
         return hud_widget
 
-    def populate_network_example(self):
+    def update_hud_position(self):
         """
+<<<<<<< HEAD
         Dibuja todos los nodos desde el controller, sin conexiones.
         Distribuye los nodos en el espacio, considerando un diámetro de 80 px
         y una distancia mínima de separación entre centros.
         """
         from math import hypot
         import random
+=======
+        Reposiciona el HUD para que siempre esté visible en la parte superior izquierda
+        de la vista, incluso cuando se hace scroll o pan.
+        """
+        self.overlay_hud.move(10, 10)
+
+    def populate_network_example(self):
+        node1_data = self.controller.buscar_por_id(1)
+        node2_data = self.controller.buscar_por_id(2)
+        node3_data = self.controller.buscar_por_id(3)
+>>>>>>> a6e6fe334f337b8794a2ac8fc92bfe686c60de0a
 
         self.scene.clear()
         self.scene.setSceneRect(-2000, -2000, 4000, 4000)
@@ -138,6 +138,7 @@ class MainGameHistoriaUI(QWidget):
 
         nodos = self.controller.obtener_todos()
 
+<<<<<<< HEAD
         # Configuración visual
         diametro_nodo = 80
         separacion_extra = 10
@@ -150,6 +151,15 @@ class MainGameHistoriaUI(QWidget):
                 if hypot(x - px, y - py) < distancia_minima:
                     return False
             return True
+=======
+        node1_item.node_clicked.connect(self.show_contact_details)
+        node2_item.node_clicked.connect(self.show_contact_details)
+        node3_item.node_clicked.connect(self.show_contact_details)
+
+        self.scene.addItem(node1_item)
+        self.scene.addItem(node2_item)
+        self.scene.addItem(node3_item)
+>>>>>>> a6e6fe334f337b8794a2ac8fc92bfe686c60de0a
 
         for nodo in nodos:
             for _ in range(100):  # intenta 100 veces una buena posición
@@ -224,15 +234,10 @@ class MainGameHistoriaUI(QWidget):
                     self.scene.addPolygon(flecha, pen, QBrush(color))
 
     def show_contact_details(self, node_data: NodeData):
-        """
-        Muestra el cuadro de diálogo con los detalles del contacto seleccionado.
-
-        Args:
-            node_data (NodeData): Nodo cuyos datos se mostrarán.
-        """
         dialog = ContactDetailDialog(node_data, self)
         dialog.exec()
 
+<<<<<<< HEAD
     def update_player_name(self):
         """
         Actualiza el nombre del jugador en el HUD con el nombre cargado desde el controlador.
@@ -243,3 +248,50 @@ class MainGameHistoriaUI(QWidget):
         # Actualizar el texto del label en el HUD con el nombre del jugador
         self.player_name_label.setText(f"{nombre_jugador}")
 
+=======
+    def update_player_name(self, name: str):
+        self.player_name_label.setText(f"Nombre Jugador: {name}")
+
+
+class InteractiveView(QGraphicsView):
+    """
+    Vista interactiva personalizada que permite hacer zoom y desplazarse
+    con el mouse. Emite una señal cada vez que la vista cambia para actualizar elementos flotantes.
+    """
+
+    view_changed = pyqtSignal()
+
+    def __init__(self, scene, parent=None):
+        super().__init__(scene, parent)
+        self.setDragMode(QGraphicsView.DragMode.ScrollHandDrag)
+        self.setTransformationAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)
+        self.setResizeAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)
+
+    def wheelEvent(self, event: QWheelEvent):
+        zoom_in_factor = 1.15
+        zoom_out_factor = 1 / zoom_in_factor
+
+        if event.angleDelta().y() > 0:
+            zoom_factor = zoom_in_factor
+        else:
+            zoom_factor = zoom_out_factor
+
+        self.scale(zoom_factor, zoom_factor)
+        self.view_changed.emit()
+
+    def mouseMoveEvent(self, event: QMouseEvent):
+        super().mouseMoveEvent(event)
+        self.view_changed.emit()
+
+    def mousePressEvent(self, event: QMouseEvent):
+        super().mousePressEvent(event)
+        self.view_changed.emit()
+
+    def mouseReleaseEvent(self, event: QMouseEvent):
+        super().mouseReleaseEvent(event)
+        self.view_changed.emit()
+
+    def scrollContentsBy(self, dx: int, dy: int):
+        super().scrollContentsBy(dx, dy)
+        self.view_changed.emit()
+>>>>>>> a6e6fe334f337b8794a2ac8fc92bfe686c60de0a

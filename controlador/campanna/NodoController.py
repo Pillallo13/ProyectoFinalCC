@@ -7,7 +7,7 @@ class NodoController:
             # base_dir = carpeta actual
             base_dir = os.path.dirname(os.path.abspath(__file__))
             # Subir dos niveles para encontrar el archivo JSON
-            path_json = os.path.normpath(os.path.join(base_dir, "../modelo/datos/campanna/redPoliticaCampana.json"))
+            path_json = os.path.normpath(os.path.join(base_dir, "modelo/datos/campanna/redPoliticaCampana.json"))
 
         self.path_json = path_json
         self.nodos: list[NodeData] = NodeData.cargar_desde_json(path_json)  # Carga los nodos desde el JSON

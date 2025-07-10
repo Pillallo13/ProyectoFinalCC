@@ -14,7 +14,7 @@ class PersonajeController:
         if path_json is None:
             # Establece la ruta al archivo JSON
             base_dir = os.path.dirname(os.path.abspath(__file__))
-            path_json = os.path.normpath(os.path.join(base_dir, "../../modelo/datos/biografia.json"))
+            path_json = os.path.normpath(os.path.join(base_dir, "modelo/datos/campanna/biografia.json"))
 
         self.path_json = path_json
         self.personaje = self.cargar_desde_json(path_json)

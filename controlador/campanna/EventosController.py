@@ -10,7 +10,7 @@ class EventosController:
             # base_dir = carpeta actual
             base_dir = os.path.dirname(os.path.abspath(__file__))
             # Subir dos niveles para encontrar el archivo JSON
-            path_json = os.path.normpath(os.path.join(base_dir, "../../modelo/datos/biografia.json"))
+            path_json = os.path.normpath(os.path.join(base_dir, "../../modelo/datos/campanna/biografia.json"))
 
         self.path_json = path_json
         self.eventos: List[EventoData] = self.cargar_desde_json(path_json)  # Carga los eventos desde el JSON

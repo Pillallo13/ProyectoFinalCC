@@ -6,7 +6,6 @@ class NodoController:
         if path_json is None:
             # base_dir = carpeta actual (red_politica)
             base_dir = os.path.dirname(os.path.abspath(__file__))
-
             # subir dos niveles: red_politica → controlador → raíz
             path_json = os.path.normpath(os.path.join(base_dir, "../../modelo/datos/redPolitica.json"))
 

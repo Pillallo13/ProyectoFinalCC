@@ -82,7 +82,7 @@ class GraphNodeItem(QGraphicsObject):
         Detecta cuando el nodo es clicado y emite la señal con los datos del nodo.
 
         Args:
-            event (QGraphicsSceneMouseEvent): Evento del clic del mouse.
+            event (QGraphicsSceneMouseEvent): EventosData del clic del mouse.
         """
         self.node_clicked.emit(self.node_data)
         super().mousePressEvent(event)

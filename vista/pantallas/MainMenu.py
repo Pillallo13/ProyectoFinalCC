@@ -64,7 +64,7 @@ class MainMenu(QWidget):
 
     def paintEvent(self, event):
         """
-        Evento de repintado del menú principal.
+        EventosData de repintado del menú principal.
 
         Dibuja la imagen de fondo escalada al tamaño del widget.
         Llama al metodo base para que se pinte el contenido normalmente.

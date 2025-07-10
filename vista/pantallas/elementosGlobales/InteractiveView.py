@@ -33,7 +33,7 @@ class InteractiveView(QGraphicsView):
         Maneja el evento de la rueda del mouse para hacer zoom in o out.
 
         Args:
-            event (QWheelEvent): Evento de rueda del mouse.
+            event (QWheelEvent): EventosData de rueda del mouse.
         """
         zoom_in_factor = 1.15
         zoom_out_factor = 1 / zoom_in_factor
@@ -45,7 +45,7 @@ class InteractiveView(QGraphicsView):
         Inicia el modo de desplazamiento (pan) si se presiona clic derecho.
 
         Args:
-            event (QMouseEvent): Evento de presión del mouse.
+            event (QMouseEvent): EventosData de presión del mouse.
         """
         if event.button() == Qt.MouseButton.RightButton:
             self._is_panning = True
@@ -59,7 +59,7 @@ class InteractiveView(QGraphicsView):
         Mueve la vista mientras se arrastra con clic derecho (pan activo).
 
         Args:
-            event (QMouseEvent): Evento de movimiento del mouse.
+            event (QMouseEvent): EventosData de movimiento del mouse.
         """
         if self._is_panning:
             delta = self.mapToScene(event.pos()) - self.mapToScene(self._pan_start)
@@ -73,7 +73,7 @@ class InteractiveView(QGraphicsView):
         Finaliza el modo de desplazamiento al soltar clic derecho.
 
         Args:
-            event (QMouseEvent): Evento de liberación del mouse.
+            event (QMouseEvent): EventosData de liberación del mouse.
         """
         if event.button() == Qt.MouseButton.RightButton:
             self._is_panning = False

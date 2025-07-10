@@ -124,13 +124,13 @@ class GameModeSelection(QWidget):
 
     def paintEvent(self, event):
         """
-        Evento de repintado de la vista.
+        EventosData de repintado de la vista.
 
         Dibuja la imagen de fondo en todo el rectángulo del widget
         cada vez que se actualiza visualmente la pantalla.
 
         Args:
-            event (QPaintEvent): Evento interno de Qt que solicita redibujo.
+            event (QPaintEvent): EventosData interno de Qt que solicita redibujo.
         """
         painter = QPainter(self)
         # Dibuja el fondo escalado para cubrir toda la ventana
